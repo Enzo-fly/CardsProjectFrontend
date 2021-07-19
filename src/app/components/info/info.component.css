@@ -1,0 +1,46 @@
+*{
+    --myWidth: 100vw;
+    font-family: 'Roboto', sans-serif;
+    font-size: calc(var(--myWidth)*0.01);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+main{
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    border: 3px dotted red; /* Параметры границы */ 
+    height: 100vh;
+    background: #F9FBFD;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+}
+.container{
+    margin: 0 auto;
+    border: 3px dotted blue;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center; 
+}
+.textInfo{
+    border: 0px dotted green;
+    margin-bottom: calc(var(--myWidth)*0.02);
+    font-size: calc(var(--myWidth)*0.015);
+}
+.buttonClass{
+    border: 0px dotted red;
+}
+.button{
+    height:calc(var(--myWidth)*0.035);
+    width:calc(var(--myWidth)*0.118);
+    background: #FFEF00;
+    color: #342E1F;
+    border-radius: 5px;
+    border: 0px dotted blue;
+    text-align: center;
+    font-size: calc(var(--myWidth)*0.01);
+  }
