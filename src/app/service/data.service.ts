@@ -10,10 +10,7 @@ export class DataService {
   private postOperationUrl = 'http://localhost:8080/api/CardOperations';
 
   constructor(private httpClient: HttpClient) { }
-  providerTestBean(){
-    return this.httpClient.get<Operation>(this.testBeanUrl);
-    //console.log("Service is working");
-  }
+
   senderOperation(operation: Operation){
     let headerString = this.createHttpHeader()
     let headers = new HttpHeaders({

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {TestBeanService} from "../../service/data/test-bean.service";
 import {Operation} from "../../item/operation";
 import { InfoEncriptionService } from 'src/app/service/info-encription.service';
 import { Router } from '@angular/router';
@@ -22,7 +21,6 @@ export class FormComponent implements OnInit {
   
   constructor(
     private formBuilder: FormBuilder,
-    // private testService: TestBeanService,
     private dataService: DataService,
     private infoEncriptionService: InfoEncriptionService,
     private router: Router) {
@@ -54,18 +52,6 @@ export class FormComponent implements OnInit {
     });
   }
 
-  getTestBean() {
-    //console.log("test the button");
-    //console.log(this.dataService.providerTestBean());
-    this.dataService.providerTestBean().subscribe(
-        response => this.processTestInformation(response)
-
-    );
-  }
-  processTestInformation(response){
-    this.myMessage = response.senderAmount;
-  }
-
   onSubmit() {
     let myOperation = new Operation();
     myOperation.senderNumber=this.operationFormGroup.controls['senderNumber'].value;
@@ -79,41 +65,25 @@ export class FormComponent implements OnInit {
 
     myOperation.senderNumber=this.infoEncriptionService.encrypt(myOperation.senderNumber);
     myOperation.receiverNumber=this.infoEncriptionService.encrypt(myOperation.receiverNumber);
-    this.requestStatus='1111'
+    
     if(this.operationFormGroup.invalid){
       this.operationFormGroup.markAllAsTouched()
     }
     else{
       this.dataService.senderOperation(myOperation).subscribe(
-        //response => console.log(response),
         response =>this.handlerResponse(response),
         error => this.handlerError(error)
-        //error => console.log(error.ok) 
       )
     }
-
-    //this.router.navigate(['info', this.requestStatus])
       
    }
   handlerError(error){
-    //this.requestStatus=error.ok
-    //this.requestStatus='1111'
-    console.log('handlerError начал работу')
-    console.log('Статус отчета: '+this.requestStatus)
-    console.log(error.status)
-    console.log(error.ok)
-    console.log(error.name)
-    console.log(error.message)
     this.requestStatus=error.name
     this.router.navigate(['info', this.requestStatus])
-    console.log('handlerError закончил работу')
   }
   handlerResponse(response){
-    console.log('handlerResponse начал работу')
-    console.log(response)
     this.requestStatus=response.status
     this.router.navigate(['info', this.requestStatus])
-    console.log('handlerResponse закончил работу')
   }
   
 }

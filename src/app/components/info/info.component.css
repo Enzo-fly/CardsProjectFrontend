@@ -10,7 +10,7 @@ main{
     display: flex; 
     flex-direction: column; 
     justify-content: center; 
-    border: 3px dotted red; /* Параметры границы */ 
+    border: 0px dotted red; /* Параметры границы */ 
     height: 100vh;
     background: #F9FBFD;
     margin: 0;
@@ -20,7 +20,7 @@ main{
 }
 .container{
     margin: 0 auto;
-    border: 3px dotted blue;
+    border: 0px dotted blue;
     display: flex; 
     flex-direction: column; 
     justify-content: center;
